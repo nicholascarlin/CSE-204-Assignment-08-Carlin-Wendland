@@ -9,5 +9,13 @@ body {
 }
 
 .todo-item-delete {
+	background-color: red;
+}
+
+.todo-item-complete {
+	background-color: blue;
+}
+
+.todo-item-complete.complete {
 	background-color: green;
 }

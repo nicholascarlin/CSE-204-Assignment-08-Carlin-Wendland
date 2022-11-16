@@ -5,8 +5,8 @@
 		<script src="scripts.js"></script>
 		<title>To Do App</title>
 	</head>
-	<body>
-		<input id="todo-input" type="text" />
+	<body onload="FetchToDos()">
+		<input id="todo-input" onkeydown="HandleInputKeyDown(event)" type="text" />
 		<button onclick="HandlePost()" id="submit-button">Submit</button>
 		<button onclick="FetchToDos()" id="submit-button">Fetch</button>
 		<ul id="todo-list"></ul>
