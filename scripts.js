@@ -8,10 +8,8 @@ const HandleInputKeyDown = (event) => {
 
 const HandlePost = () => {
 	let inputRef = document.getElementById('todo-input');
-	console.log(inputRef.value);
 
 	if (inputRef.value !== ' ') {
-		console.log('called');
 		PostToDo(inputRef.value);
 		inputRef.value = '';
 	}
@@ -51,7 +49,6 @@ const FetchToDos = async () => {
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var todos = JSON.parse(this.responseText);
-			console.log(todos);
 			UpdateHTML(todos);
 		}
 	};
@@ -65,7 +62,6 @@ const UpdateHTML = (newList) => {
 	let listItem = document.getElementById('todo-list');
 	listItem.innerHTML = '';
 	newList.map((item) => {
-		console.log(item);
 		var tempItem = document.createElement('p');
 		tempItem.contentEditable = 'true';
 		tempItem.id = item.id;
@@ -102,9 +98,7 @@ const UpdateHTML = (newList) => {
 };
 
 const HandleDelete = (event) => {
-	console.log('CLICKED DELTE', event.target.id);
 	const url = `https://cse204.work/todos/${event.target.id}`;
-	console.log('URL', url);
 
 	var xhttp = new XMLHttpRequest();
 
@@ -120,7 +114,6 @@ const HandleDelete = (event) => {
 };
 
 const HandleChange = (event) => {
-	console.log('BLUR FIRED', event.target.innerHTML);
 	const url = `https://cse204.work/todos/${event.target.id}`;
 
 	var data = {
@@ -150,11 +143,9 @@ const HandleChange = (event) => {
 };
 
 HandleComplete = (event) => {
-	console.log('BLUR FIRED', event);
 	const url = `https://cse204.work/todos/${event.target.id}`;
 
 	let completeStatus = !event.target.classList.contains('complete');
-	console.log('COMPLETE STATUS', completeStatus);
 
 	var data = {
 		completed: completeStatus,
