@@ -1,11 +1,14 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" href="style.css" />
-		<meta name="To Do App" content="This is a todo app />
+		<meta name="To Do App" content="This is a todo app" />
 		<script src="scripts.js"></script>
 		<title>To Do App</title>
 	</head>
 	<body>
-		<div>test</div>
+		<input id="todo-input" type="text" />
+		<button onclick="HandlePost()" id="submit-button">Submit</button>
+		<button onclick="FetchToDos()" id="submit-button">Fetch</button>
+		<ul id="todo-list"></ul>
 	</body>
 </html>
