@@ -60,15 +60,25 @@ const UpdateHTML = (newList) => {
 	listItem.innerHTML = '';
 	newList.map((item) => {
 		console.log(item);
-		var tempItem = document.createElement('li');
+		var tempItem = document.createElement('p');
+		tempItem.contentEditable = 'true';
 		tempItem.id = item.id;
 		tempItem.classList.add('todo-item');
-		tempItem.addEventListener('click', function handleClick(event) {
+		tempItem.addEventListener('blur', function handleBlur(event) {
+			HandleChange(event);
+		});
+
+		var deleteItem = document.createElement('button');
+		deleteItem.innerHTML = 'Delete';
+		deleteItem.id = item.id;
+		deleteItem.classList.add('todo-item-delete');
+		deleteItem.addEventListener('click', function handleClick(event) {
 			HandleDelete(event);
 		});
 		var textNode = document.createTextNode(item.text);
 		tempItem.appendChild(textNode);
 		listItem.appendChild(tempItem);
+		listItem.appendChild(deleteItem);
 	});
 };
 
@@ -88,4 +98,34 @@ const HandleDelete = (event) => {
 	xhttp.open('DELETE', url, true);
 	xhttp.setRequestHeader('x-api-key', api_key);
 	xhttp.send();
+};
+
+const HandleChange = (event) => {
+	console.log('BLUR FIRED', event.target.innerHTML);
+	const url = `https://cse204.work/todos/${event.target.id}`;
+
+	var data = {
+		text: event.target.innerHTML,
+	};
+
+	// Initalize AJAX Request
+	var xhttp2 = new XMLHttpRequest();
+
+	// Response handler
+	xhttp2.onreadystatechange = function () {
+		// Wait for readyState = 4 & 200 response
+		if (this.readyState == 4 && this.status == 200) {
+			// parse JSON response
+			FetchToDos();
+		} else if (this.readyState == 4) {
+			// this.status !== 200, error from server
+			console.log(this.responseText);
+		}
+	};
+
+	xhttp2.open('PUT', url, true);
+
+	xhttp2.setRequestHeader('Content-type', 'application/json');
+	xhttp2.setRequestHeader('x-api-key', api_key);
+	xhttp2.send(JSON.stringify(data));
 };
