@@ -1,21 +1,107 @@
 html,
 body {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+#input-container {
+  padding-top: 50px;
+}
+#submit-button {
+  border-radius: 10px;
+  margin: 0px 5px;
+  height: 35px;
+  border: 0px;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  width: 80px;
+  margin-right: 20px;
+}
+#submit-button:hover {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+#todo-input {
+  text-align: center;
+  margin: 0px 10px 0px 120px;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#todo-input:hover,
+#todo-input:focus {
+  background-color: whitesmoke;
+}
+#list-container {
+  padding-bottom: 25px;
 }
 
+.completed-item {
+  text-decoration: line-through;
+  background-color: rgba(34, 157, 34, 0.8) !important;
+}
+.completed-item:hover {
+  text-decoration: unset;
+  background-color: rgba(34, 157, 34, 0.5) !important;
+}
+input:focus,
+.todo-item:focus {
+  outline: 0;
+}
 .todo-item {
-	border: solid 1px black;
+  border: 0px !important;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
+  background-color: rgb(232, 230, 230);
 }
 
 .todo-item-delete {
-	background-color: red;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  margin: 0px 0px 0px 30px;
+  height: 35px;
+  border: 0px;
+  width: 100px;
+  cursor: pointer;
 }
 
 .todo-item-complete {
-	background-color: blue;
+  background-color: rgba(34, 157, 34);
+  color: white;
+  border-radius: 10px;
+  margin: 0px 5px;
+  height: 35px;
+  border: 0px;
+  width: 100px;
+  cursor: pointer;
+}
+.todo-item-complete:hover {
+  background-color: rgba(34, 157, 34, 0.8);
 }
 
 .todo-item-complete.complete {
-	background-color: green;
+  background-color: rgba(0, 0, 255, 1);
+}
+.todo-item-complete.complete:hover {
+  background-color: rgba(0, 0, 255, 0.8);
+}
+
+@media (max-width: 480px) {
+  #todo-input {
+    width: 300px;
+  }
+  #submit-button {
+    margin-right: 60px;
+  }
+  .todo-item {
+    padding: 10px;
+  }
 }

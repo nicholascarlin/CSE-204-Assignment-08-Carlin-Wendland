@@ -1,14 +1,28 @@
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="stylesheet" href="style.css" />
-		<meta name="To Do App" content="This is a todo app" />
-		<script src="scripts.js"></script>
-		<title>To Do App</title>
-	</head>
-	<body onload="FetchToDos()">
-		<input id="todo-input" onkeydown="HandleInputKeyDown(event)" type="text" />
-		<button onclick="HandlePost()" id="submit-button">Submit</button>
-		<button onclick="FetchToDos()" id="submit-button">Fetch</button>
-		<ul id="todo-list"></ul>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="To Do App" content="This is a todo app" />
+    <script src="scripts.js"></script>
+    <title>To Do App</title>
+  </head>
+  <body onload="FetchToDos()">
+    <div class="container" id="input-container">
+      <input
+        id="todo-input"
+        onkeydown="HandleInputKeyDown(event)"
+        type="text"
+        placeholder="New Todo"
+      />
+      <button onclick="HandlePost()" class="input-button" id="submit-button">
+        Submit
+      </button>
+    </div>
+    <div class="container" id="list-container">
+      <div id="todo-list"></div>
+    </div>
+  </body>
 </html>
